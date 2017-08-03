@@ -1,0 +1,5 @@
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\Debug\SMM.Services.dll
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\Debug\SMM.Services.pdb
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Services\obj\Debug\SMM.Services.csprojResolveAssemblyReference.cache
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Services\obj\Debug\SMM.Services.dll
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Services\obj\Debug\SMM.Services.pdb

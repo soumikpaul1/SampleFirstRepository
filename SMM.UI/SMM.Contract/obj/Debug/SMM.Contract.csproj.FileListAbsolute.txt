@@ -1,0 +1,6 @@
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Contract\bin\Debug\SMM.Contract.dll
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Contract\bin\Debug\SMM.Contract.pdb
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\Debug\SMM.Contract.dll
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\Debug\SMM.Contract.pdb
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Contract\obj\Debug\SMM.Contract.dll
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Contract\obj\Debug\SMM.Contract.pdb

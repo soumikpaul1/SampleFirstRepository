@@ -1,0 +1,122 @@
+﻿<controls:MetroWindow x:Class="SMM.Configuration.SMMApplicationConfiguration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:views="clr-namespace:SMM.Configuration.UserControls"
+        mc:Ignorable="d"
+        Title="SMM Configuration" MinHeight="300" MinWidth="300"
+        ShowIconOnTitleBar="True"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="True"
+        TitleCharacterCasing="Normal"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        WindowState="Maximized"
+        ResizeMode="CanResizeWithGrip"
+        ShowTitleBar="True">
+    <Grid x:Name="ConfigGrid">
+        <Grid.Resources>
+            <!--Data template for Hamburger menu item-->
+            <DataTemplate x:Key="HamburgerMenuItemDataTemplate" DataType="{x:Type controls:HamburgerMenu}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Grid.Column="0"
+                                    Content="{Binding Tag}"
+                                    Focusable="False"
+                                    IsTabStop="False"
+                                    />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Text="{Binding Label}"/>
+                </Grid>
+            </DataTemplate>
+            <!--Data Template for Hamburger Menu Glyph Image Item-->
+            <DataTemplate x:Key="HamburgerMenuGlyphItemDataTemplate" DataType="{x:Type controls:HamburgerMenuGlyphItem}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="12" Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Source="{Binding Glyph}"
+                           Stretch="UniformToFill"
+                           ToolTip="{Binding Label}"/>
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Text="{Binding Label}"/>
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+        <controls:HamburgerMenu
+            SelectedIndex="0"
+            DisplayMode="CompactInline"
+            HamburgerWidth="48"
+            ItemTemplate="{StaticResource HamburgerMenuGlyphItemDataTemplate}"
+            IsPaneOpen="False"
+            Content="{Binding RelativeSource={RelativeSource Self}, Mode=OneWay, Path=SelectedItem}"
+            Name="HamburgerMenu"
+            VerticalScrollBarOnLeftSide="False">
+            <controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
+                <DataTemplate x:Name="HamburgerMenuHeaderTemplate" DataType="{x:Type controls:HamburgerMenu}">
+                    <TextBlock Text="Database Configuration"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontWeight="ExtraBold"
+                               Padding="5,0,0,0"/>
+                </DataTemplate>
+            </controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <controls:HamburgerMenu.ItemsSource>
+                <controls:HamburgerMenuItemCollection>
+                    <controls:HamburgerMenuGlyphItem Glyph="pack://application:,,,/Images/Database.png"
+                                                     Label="Facets Database Section">
+                        <controls:HamburgerMenuGlyphItem.Tag>
+                            <views:FacetsDatabaseSectionUC/>
+                        </controls:HamburgerMenuGlyphItem.Tag>
+                    </controls:HamburgerMenuGlyphItem>
+                    <controls:HamburgerMenuGlyphItem Glyph="pack://application:,,,/Images/Database.png"
+                                                     Label="SMM Database Section">
+                        <controls:HamburgerMenuGlyphItem.Tag>
+                            <views:SMMDatabaseSectionUC/>
+                        </controls:HamburgerMenuGlyphItem.Tag>
+                    </controls:HamburgerMenuGlyphItem>
+                    <controls:HamburgerMenuGlyphItem Glyph="pack://application:,,,/Images/ApplicationSetting.png"
+                                                     Label="Application Settings"
+                                                     />
+                </controls:HamburgerMenuItemCollection>
+            </controls:HamburgerMenu.ItemsSource>
+            
+            <!-- Content -->
+            <controls:HamburgerMenu.ContentTemplate>
+                <DataTemplate>
+                    <Grid x:Name="ContentGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="48"/>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Background="#7A7A7A">
+                            <TextBlock x:Name="Header"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="24"
+                                       Foreground="White"
+                                       Text="{Binding Label}"/>
+                        </Border>
+                        <controls:TransitioningContentControl Grid.Row="1"
+                                                              Content="{Binding Tag}"
+                                                              RestartTransitionOnContentChange="True"
+                                                              Transition="Default">
+                            
+                        </controls:TransitioningContentControl>
+                    </Grid>
+                </DataTemplate>
+            </controls:HamburgerMenu.ContentTemplate>
+        </controls:HamburgerMenu>
+    </Grid>
+</controls:MetroWindow>

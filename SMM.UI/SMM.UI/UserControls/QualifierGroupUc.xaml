@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="SMM.UI.UserControls.QualifierGroupUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SMM.UI.UserControls"
+             xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Loaded="QualifierGroupUc_OnLoaded">
+    <DockPanel>
+        <StackPanel Name="BtnPlaceHolderPanel"
+                        Orientation="Horizontal"
+                        DockPanel.Dock="Right">
+            <StackPanel.Resources>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
+            </StackPanel.Resources>
+            <StackPanel.LayoutTransform>
+                <RotateTransform Angle="90"></RotateTransform>
+            </StackPanel.LayoutTransform>
+            <!-- ReSharper disable once Xaml.StaticResourceNotResolved -->
+            <Button Name="BtnQualGroupFilters"
+                    Style="{StaticResource MetroFlatButton}"
+                    Content="Filter"
+                    Background="{DynamicResource AccentColorBrush}"
+                    Foreground="White"
+                    MouseEnter="BtnQualGroupFilters_OnMouseEnter">
+               
+            </Button>
+        </StackPanel>
+        
+        <!--The Grid Containing two child grids that fills the dock panel-->
+        <Grid Name="ParentContentGrid" Grid.IsSharedSizeScope="True">
+            <!--Layer 0-->
+            <Grid Name="QualifierDetailsGrid" Background="AliceBlue"
+                  MouseEnter="QualifierDetailsGrid_OnMouseEnter">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Qualifier Grous" Grid.Column="0">
+                    <ComboBox Height="30" VerticalAlignment="Top" ItemsSource="{Binding QualifierGroups ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              ></ComboBox>
+                    <!--<ListView ItemsSource="{Binding QualifierGroups ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="{Binding QualifierGroupDescription , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ListView>-->
+                </GroupBox>
+                <GroupBox Grid.Column="1" Header="Qualifier Values">
+                    <DataGrid></DataGrid>
+                </GroupBox>
+            </Grid>
+            
+            <!--Layer 1-->
+            <Grid Name="FilterGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition 
+                        SharedSizeGroup="column1" 
+                        Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <!--Column 0 is empty but column 1 has grid and grid splitter-->
+                <Grid Grid.Column="1" Name="FilterDataGrid"
+                      Background="{DynamicResource AccentColorBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--Row 0 contains header and row 2 contains pane specific content-->
+                    <DockPanel Grid.Row="0">
+                        <Button Name="BtnPane1Pin" Style="{DynamicResource MetroCircleButtonStyle}"
+                                Height="{Binding ElementName=FilterTextBlock, Path=Height}" Width="25"
+                                DockPanel.Dock="Right"
+                                Click="BtnPane1Pin_OnClick">
+                            <iconPacks:PackIconModern
+                                Width="20"
+                                Height="20"
+                                Kind="Pin">
+                            </iconPacks:PackIconModern>
+                            <Button.LayoutTransform>
+                                <RotateTransform Angle="45"></RotateTransform>
+                            </Button.LayoutTransform>
+                        </Button>
+                        <TextBlock Padding="8" DockPanel.Dock="Left"
+                                   TextTrimming="CharacterEllipsis"
+                                   Height="25"
+                                   Name="FilterTextBlock"
+                                   Foreground="White"
+                                   Background="{DynamicResource AccentColorBrush}"
+                                   Text="Filter"
+                                   FontStyle="Normal"
+                                   FontWeight="ExtraBold"></TextBlock>
+                    </DockPanel>
+                    <Grid Name="FilterContentGrid" Grid.Row="1">
+                        <ListBox Padding="0 2 0 0 ">
+                            <ListBoxItem Content="This is test data"></ListBoxItem>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+                <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Left"/>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</UserControl>

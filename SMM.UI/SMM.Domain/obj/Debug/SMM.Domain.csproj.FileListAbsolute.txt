@@ -1,0 +1,5 @@
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\Debug\SMM.Domain.dll
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\Debug\SMM.Domain.pdb
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Domain\obj\Debug\SMM.Domain.csprojResolveAssemblyReference.cache
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Domain\obj\Debug\SMM.Domain.dll
+D:\Soumik Paul\Learning\SMM\Phase1\SMM.UI\SMM.Domain\obj\Debug\SMM.Domain.pdb
